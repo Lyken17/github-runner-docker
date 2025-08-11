@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x 
 if [[ -z $RUNNER_TOKEN && -z $GITHUB_ACCESS_TOKEN ]]; then
     echo "Error : You need to set RUNNER_TOKEN (or GITHUB_ACCESS_TOKEN) environment variable."
     exit 1

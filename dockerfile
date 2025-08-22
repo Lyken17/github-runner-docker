@@ -1,5 +1,6 @@
 # base
-FROM ubuntu:20.04
+# FROM ubuntu:20.04
+FROM nvcr.io/nvidia/cuda:12.9.1-devel-ubuntu20.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # set the github runner version

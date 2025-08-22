@@ -1,4 +1,6 @@
 #!/bin/bash
+export RUNNER_REPOSITORY_URL=https://github.com/Efficient-Large-Model/flash-attention-builder
+
 docker build --platform linux/amd64 -t test-runner-2.280.3 .
 
 # export RUNNER_TOKEN=xxx

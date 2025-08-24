@@ -1,10 +1,10 @@
 # base
 # FROM ubuntu:20.04
 FROM nvcr.io/nvidia/cuda:12.9.1-devel-ubuntu20.04
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 # set the github runner version
-ARG RUNNER_VERSION="2.327.1"
+ARG RUNNER_VERSION="2.328.0"
 
 # update the base packages
 # RUN apt-get update -y && apt-get upgrade -y 

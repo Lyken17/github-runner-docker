@@ -19,6 +19,7 @@ RUN mkdir /home/docker
 #    --no-install-suggests --no-install-recommends
 RUN apt-get install -y --no-install-suggests --no-install-recommends \
         curl \
+        git \
         ca-certificates \
         jq \
         sudo \

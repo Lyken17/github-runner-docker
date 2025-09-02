@@ -20,8 +20,8 @@ while true; do
 GITHUB_ACCESS_TOKEN=$ELM_RUNNER_TOKEN \
 RUNNER_ORGANIZATION_URL=https://github.com/Efficient-Large-Model \
 RUNNER_TAGS="self-hosted,linux,x64,gpu" \
-RUNNER_NAME="ligeng-cs-gpu" \
-RUNNER_TAGS=${RUNNER_TAGS:-"self-hosted,linux,x64,gpu,docker,a100"} \
+RUNNER_NAME="ligeng-nrt-gpu" \
+RUNNER_TAGS=${RUNNER_TAGS:-"self-hosted,linux,x64,gpu,docker,a100,nrt"} \
     srun -A $VILA_SLURM_ACCOUNT -p interactive,$VILA_SLURM_PARTITION -t 4:00:00 \
     -J dev:docker-group-ci \
     --gres=gpu:1 --cpus-per-task 16 --mem=256G \

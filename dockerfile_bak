@@ -27,34 +27,14 @@ RUN apt-get install -y --no-install-suggests --no-install-recommends \
         wget \
         software-properties-common
 
-# install Miniconda (Anaconda's lightweight distribution)
-RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
-    bash /tmp/miniconda.sh -b -p /opt/conda && \
-    rm /tmp/miniconda.sh
-
-# add conda to PATH
-ENV PATH="/opt/conda/bin:$PATH"
-
-# agree conda's channels and term
-RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
-    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
-
-# update conda and install python 3.10
-RUN conda update -n base -c defaults conda && \
-    conda install -y python=3.10 && \
-    conda clean -afy
-
-# set Anaconda's python as default
-RUN ln -sf /opt/conda/bin/python /usr/bin/python
-
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
     && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 
-#   change ownership to non-sudo user
-# RUN chown -R docker ~docker && /home/docker/actions-runner/bin/installdependencies.sh
-#   install some additional dependencies
+# change ownership to non-sudo user
+#RUN chown -R docker ~docker && /home/docker/actions-runner/bin/installdependencies.sh
+# install some additional dependencies
 RUN /home/docker/actions-runner/bin/installdependencies.sh
 
 # copy over the start.sh script

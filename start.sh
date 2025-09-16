@@ -2,7 +2,7 @@
 set -x 
 
 RUNNER_NAME=${RUNNER_NAME:-"ligeng-mac"}
-RUNNER_TAGS=${RUNNER_TAGS:-"self-hosted,linux,x64,cpu"}
+RUNNER_TAGS=${{RUNNER_TAGS}:-"self-hosted,linux,x64,cpu"}
 
 if [[ -z $RUNNER_TOKEN && -z $GITHUB_ACCESS_TOKEN ]]; then
     echo "Error : You need to set RUNNER_TOKEN (or GITHUB_ACCESS_TOKEN) environment variable."
@@ -48,7 +48,7 @@ export RUNNER_ALLOW_RUNASROOT=1
     --token $RUNNER_TOKEN \
     --runnergroup "default" \
     --name "${RUNNER_NAME}@$(date +%m-%d-%H%M%S)" \
-    --labels "$RUNNER_TAGS" \
+    --labels "${RUNNER_TAGS}" \
     --work _work \
     --ephemeral
 
